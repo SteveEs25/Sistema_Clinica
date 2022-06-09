@@ -8,7 +8,7 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('pais_id') }}
+            {{ Form::label('País') }}
             {{ Form::select('pais_id', $paise, $ciudade->pais_id, ['class' => 'form-control' . ($errors->has('pais_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un País']) }}
             {!! $errors->first('pais_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>

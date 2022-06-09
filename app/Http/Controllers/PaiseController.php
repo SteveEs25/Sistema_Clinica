@@ -47,8 +47,7 @@ class PaiseController extends Controller
 
         $paise = Paise::create($request->all());
 
-        return redirect()->route('paises.index')
-            ->with('success', 'Paise created successfully.');
+        return redirect()->route('paises.create')->with('crear', 'creado');
     }
 
     /**
@@ -90,8 +89,7 @@ class PaiseController extends Controller
 
         $paise->update($request->all());
 
-        return redirect()->route('paises.index')
-            ->with('success', 'Paise updated successfully');
+        return redirect()->route('paises.index')->with('editar', 'editado');
     }
 
     /**
@@ -103,7 +101,6 @@ class PaiseController extends Controller
     {
         $paise = Paise::find($id)->delete();
 
-        return redirect()->route('paises.index')
-            ->with('success', 'Paise deleted successfully');
+        return redirect()->route('paises.index');
     }
 }

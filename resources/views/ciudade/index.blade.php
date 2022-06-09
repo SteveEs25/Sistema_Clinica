@@ -39,7 +39,7 @@
                                         <th>No</th>
                                         
                                         <th>Nombre Ciudad</th>
-                                        <th>Pais</th>
+                                        <th>País</th>
 
                                         <th></th>
                                     </tr>

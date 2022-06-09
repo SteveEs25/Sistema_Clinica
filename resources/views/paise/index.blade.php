@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    Paise
-@endsection
+@section('title', 'Países')
+
+@section('content_header')
+    <h1>Lista de Países</h1>
+@stop
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -13,14 +15,14 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Paise') }}
+                                {{ __('Países') }}
                             </span>
 
-                             <div class="float-right">
+                            <div class="float-right">
                                 <a href="{{ route('paises.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                    <i class="bi bi-plus-lg"></i> {{ __('Crear Nuevo') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -36,7 +38,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Nombre Pais</th>
+                                        <th>Nombre País</th>
 
                                         <th></th>
                                     </tr>
@@ -46,15 +48,15 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $paise->nombre_pais }}</td>
+                                            <td>{{ $paise->nombre_pais }}</td>
 
                                             <td>
-                                                <form action="{{ route('paises.destroy',$paise->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('paises.show',$paise->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('paises.edit',$paise->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('paises.destroy',$paise->id) }}" method="POST" class="formulario_eliminar">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('paises.show',$paise->id) }}"><i class="bi bi-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('paises.edit',$paise->id) }}"><i class="bi bi-pencil"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -68,4 +70,48 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+@stop
+
+@section('js')
+    <script>
+        $('.formulario_eliminar').submit(function(e) {
+            e.preventDefault();
+            
+            Swal.fire({
+                title: "Eliminar",
+                text: "¿Estas seguro que deseas eliminar?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                        'Eliminado',
+                        'La información ha sido eliminada',
+                        'Success'
+                    )
+
+                    this.submit();
+                }
+            })
+        })
+    </script>
+
+    @if (session('editar') == 'editado')
+        <script>
+            Swal.fire(
+                'Actualizado',
+                'La información se actualizó con éxito',
+                'Success'
+            )
+            this.submit();
+        </script>
+    @endif
+@stop

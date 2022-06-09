@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    Update Paise
-@endsection
+@section('title', 'Países')
+
+@section('content_header')
+    <h1>Editar País</h1>
+@stop
 
 @section('content')
     <section class="content container-fluid">
@@ -13,10 +15,10 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Paise</span>
+                        <span class="card-title">Editar País</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('paises.update', $paise->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('paises.update', $paise->id) }}"  role="form" enctype="multipart/form-data" class="formulario_editar">
                             {{ method_field('PATCH') }}
                             @csrf
 
@@ -28,4 +30,14 @@
             </div>
         </div>
     </section>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+@stop
+
+@section('js')
+    <script></script>
+@stop

@@ -194,7 +194,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => 'user/profile',
 
     /*
     |--------------------------------------------------------------------------
@@ -249,20 +249,21 @@ return [
         [
             'text'        => 'Ciudades',
             'url'         => '/ciudades',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-city',
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Paises',
+            'text'        => 'Países',
             'url'         => '/paises',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-globe',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        /*['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
+            'show' => false,
         ],
         [
             'text' => 'change_password',
@@ -322,7 +323,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
@@ -406,7 +407,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    {{ $paise->name ?? 'Show Paise' }}
-@endsection
+@section('title', 'Países')
+
+@section('content_header')
+    <h1>Mostrar Países</h1>
+@stop
 
 @section('content')
     <section class="content container-fluid">
@@ -11,17 +13,17 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Paise</span>
+                            <span class="card-title">Mostrar Países</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('paises.index') }}"> Back</a>
+                            <a class="btn btn-danger" href="{{ route('paises.index') }}"> Atrás</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Nombre Pais:</strong>
+                            <strong>Nombre País:</strong>
                             {{ $paise->nombre_pais }}
                         </div>
 
@@ -30,4 +32,14 @@
             </div>
         </div>
     </section>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
