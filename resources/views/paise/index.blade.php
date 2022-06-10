@@ -33,9 +33,9 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped " id="myTable">
                                 <thead class="thead">
-                                    <tr>
+                                    <tr style="background-color: #337ab7; color:#fff;">
                                         <th>No</th>
                                         
                                         <th>Nombre País</th>
@@ -76,10 +76,22 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css"/> 
 @stop
 
 @section('js')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
     <script>
+        //Alerta para despues de Guardar
         $('.formulario_eliminar').submit(function(e) {
             e.preventDefault();
             
@@ -106,6 +118,7 @@
 
     @if (session('editar') == 'editado')
         <script>
+            //Alerta para despues de editar
             Swal.fire(
                 'Actualizado',
                 'La información se actualizó con éxito',
@@ -114,4 +127,31 @@
             this.submit();
         </script>
     @endif
+
+
+    
+    <script>
+        //Botones para generar archivos externos
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                responsive: "true",
+                dom: 'Bfrtilp',
+                buttons:[
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i>',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i>',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
+                    },
+                ] 
+            });
+        });
+    </script>
+
 @stop

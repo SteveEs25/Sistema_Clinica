@@ -38,5 +38,14 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    @if (session('crear') == 'creado')
+        <script>
+            Swal.fire(
+                'Guardado',
+                'La información se guardo con éxito',
+                'Success'
+            )
+            this.submit();
+        </script>
+    @endif
 @stop
