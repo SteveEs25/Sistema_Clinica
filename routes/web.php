@@ -25,6 +25,12 @@ Route::resource('paises', App\Http\Controllers\PaiseController::class)->middlewa
 
 Route::resource('ciudades', App\Http\Controllers\CiudadeController::class)->middleware('auth');
 
+Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)->middleware('auth');
+
+Route::resource('tipo-documentos', App\Http\Controllers\TipoDocumentoController::class)->middleware('auth');
+
+Route::resource('entrada-cabeceras', App\Http\Controllers\EntradaCabeceraController::class)->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

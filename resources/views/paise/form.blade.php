@@ -2,7 +2,7 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('nombre_pais') }}
+            {{ Form::label('nombre del país') }}
             {{ Form::text('nombre_pais', $paise->nombre_pais, ['class' => 'form-control' . ($errors->has('nombre_pais') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Pais']) }}
             {!! $errors->first('nombre_pais', '<div class="invalid-feedback">:message</div>') !!}
         </div>

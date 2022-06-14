@@ -246,6 +246,20 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'Almacenaje'],
+        [
+            'text'        => 'Entradas',
+            'url'         => '/entrada-cabeceras',
+            'icon'        => 'fas fa-fw fa-arrow-right',
+            'label_color' => 'success',
+        ],
+        ['header' => 'Mantenimientos'],
+        [
+            'text'        => 'Proveedores',
+            'url'         => '/proveedores',
+            'icon'        => 'fas fa-fw fa-industry',
+            'label_color' => 'success',
+        ],
         [
             'text'        => 'Ciudades',
             'url'         => '/ciudades',
