@@ -58,9 +58,9 @@
 											<td>{{ $entradaCabecera->fecha_pedido }}</td>
 											<td>{{ $entradaCabecera->fecha_recibido }}</td>
 											<td>{{ $entradaCabecera->numero_factura }}</td>
-											<td>{{ $entradaCabecera->proveedor_id }}</td>
-											<td>{{ $entradaCabecera->documento_id }}</td>
-											<td>{{ $entradaCabecera->estado_id }}</td>
+											<td>{{ $entradaCabecera->proveedore->nombre_proveedor }}</td>
+											<td>{{ $entradaCabecera->tipoDocumento->nombre_tipoDocumento }}</td>
+											<td>{{ $entradaCabecera->estado->nombre_estado }}</td>
 
                                             <td>
                                                 <form action="{{ route('entrada-cabeceras.destroy',$entradaCabecera->id) }}" method="POST" class="formulario_eliminar">

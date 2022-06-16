@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EntradaCabecera;
 use App\Models\Proveedore;
 use App\Models\TipoDocumento;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 /**
@@ -36,8 +37,9 @@ class EntradaCabeceraController extends Controller
         $entradaCabecera = new EntradaCabecera();
         $proveedore = Proveedore::pluck('nombre_proveedor', 'id');
         $tipoDocumento = TipoDocumento::pluck('nombre_tipoDocumento', 'id');
+        $estado = Estado::pluck('nombre_estado', 'id');
 
-        return view('entrada-cabecera.create', compact('entradaCabecera', 'proveedore', 'tipoDocumento'));
+        return view('entrada-cabecera.create', compact('entradaCabecera', 'proveedore', 'tipoDocumento', 'estado'));
     }
 
     /**
@@ -79,8 +81,9 @@ class EntradaCabeceraController extends Controller
         $entradaCabecera = EntradaCabecera::find($id);
         $proveedore = Proveedore::pluck('nombre_proveedor', 'id');
         $tipoDocumento = TipoDocumento::pluck('nombre_tipoDocumento', 'id');
+        $estado = Estado::pluck('nombre_estado', 'id');
 
-        return view('entrada-cabecera.edit', compact('entradaCabecera', 'proveedore', 'tipoDocumento'));
+        return view('entrada-cabecera.edit', compact('entradaCabecera', 'proveedore', 'tipoDocumento', 'estado'));
     }
 
     /**

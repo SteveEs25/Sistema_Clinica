@@ -8,12 +8,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('fecha_pedido') }}
-            {{ Form::text('fecha_pedido', $entradaCabecera->fecha_pedido, ['class' => 'form-control' . ($errors->has('fecha_pedido') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Pedido']) }}
+            {{ Form::date('fecha_pedido', $entradaCabecera->fecha_pedido, ['class' => 'form-control' . ($errors->has('fecha_pedido') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Pedido']) }}
             {!! $errors->first('fecha_pedido', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('fecha_recibido') }}
-            {{ Form::text('fecha_recibido', $entradaCabecera->fecha_recibido, ['class' => 'form-control' . ($errors->has('fecha_recibido') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Recibido']) }}
+            {{ Form::date('fecha_recibido', $entradaCabecera->fecha_recibido, ['class' => 'form-control' . ($errors->has('fecha_recibido') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Recibido']) }}
             {!! $errors->first('fecha_recibido', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
@@ -32,9 +32,9 @@
             {!! $errors->first('documento_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Tipo Documento') }}
-            {{ Form::select('documento_id', $tipoDocumento, $entradaCabecera->documento_id, ['class' => 'form-control' . ($errors->has('documento_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el Tipo de Documento']) }}
-            {!! $errors->first('documento_id', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('Estado') }}
+            {{ Form::select('estado_id', $estado, $entradaCabecera->estado_id, ['class' => 'form-control' . ($errors->has('estado_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el Estado']) }}
+            {!! $errors->first('estado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
