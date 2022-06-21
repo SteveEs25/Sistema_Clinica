@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="{{ asset('/img/logo.png') }}" alt="Logo" style="width: 120px;">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -40,7 +40,7 @@
                 @endif
 
                 <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
+                    {{ __('Iniciar Sesión') }}
                 </x-jet-button>
             </div>
             

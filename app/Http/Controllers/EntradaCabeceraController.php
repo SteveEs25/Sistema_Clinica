@@ -54,7 +54,7 @@ class EntradaCabeceraController extends Controller
 
         $entradaCabecera = EntradaCabecera::create($request->all());
 
-         return redirect()->route('entrada-cabecaras.create')->with('crear', 'creado');
+         return redirect()->route('entrada-cabeceras.create')->with('crear', 'creado');
     }
 
     /**

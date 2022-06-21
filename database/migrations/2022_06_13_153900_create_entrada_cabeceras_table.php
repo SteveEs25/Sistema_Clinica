@@ -24,6 +24,7 @@ class CreateEntradaCabecerasTable extends Migration
             $table->bigInteger('proveedor_id')->unsigned();
             $table->bigInteger('documento_id')->unsigned();
             $table->bigInteger('estado_id')->unsigned();
+            $table->timestamps();
 
             $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('cascade');
             $table->foreign('documento_id')->references('id')->on('tipo_documentos')->onDelete('cascade');
