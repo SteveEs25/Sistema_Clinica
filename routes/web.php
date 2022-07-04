@@ -31,6 +31,14 @@ Route::resource('tipo-documentos', App\Http\Controllers\TipoDocumentoController:
 
 Route::resource('entrada-cabeceras', App\Http\Controllers\EntradaCabeceraController::class)->middleware('auth');
 
+Route::resource('tipo-productos', App\Http\Controllers\TipoProductoController::class)->middleware('auth');
+
+Route::resource('productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
+
+Route::resource('inventario', App\Http\Controllers\InventarioController::class)->middleware('auth');
+
+Route::resource('entrada-detalle', App\Http\Controllers\EntradaDetalleController::class)->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

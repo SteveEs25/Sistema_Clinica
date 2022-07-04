@@ -28,6 +28,9 @@ class CreateEntradaDetallesTable extends Migration
             $table->date('fecha_vencimiento');
             $table->integer('lote');
             $table->timestamps();
+
+            $table->foreign('entradaCabecera_id')->references('id')->on('entrada_cabeceras')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
         });
     }
 
