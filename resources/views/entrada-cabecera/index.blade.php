@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Entradas')
+@section('title', 'Pedidos')
 
 @section('content_header')
-    <h1>Lista de Entradas</h1>
+    <h1>Pedidos</h1>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Entradas Cabecera') }}
+                                {{ __('Pedidos') }}
                             </span>
 
                              <div class="float-right">
@@ -146,6 +146,9 @@
         //Botones para generar archivos externos
         $(document).ready( function () {
             $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
                 responsive: "true",
                 dom: 'Bfrtilp',
                 buttons:[

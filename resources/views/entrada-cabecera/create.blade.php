@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Entradas')
+@section('title', 'Pedidos')
 
 @section('content_header')
-    <h1>Crear Entrada</h1>
+    <h1>Crear Pedido</h1>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Entrada</span>
+                        <span class="card-title">Crear Pedido</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('entrada-cabeceras.store') }}"  role="form" enctype="multipart/form-data">

@@ -136,6 +136,9 @@
         //Botones para generar archivos externos
         $(document).ready( function () {
             $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
                 responsive: "true",
                 dom: 'Bfrtilp',
                 buttons:[

@@ -40,15 +40,15 @@
                         </div>
                         <div class="form-group">
                             <strong>Proveedor:</strong>
-                            {{ $entradaCabecera->proveedor_id }}
+                            {{ $entradaCabecera->proveedore->nombre_proveedor }}
                         </div>
                         <div class="form-group">
                             <strong>Tipo de Documento:</strong>
-                            {{ $entradaCabecera->documento_id }}
+                            {{ $entradaCabecera->tipoDocumento->nombre_tipoDocumento }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $entradaCabecera->estado_id }}
+                            {{ $entradaCabecera->estado->nombre_estado }}
                         </div>
 
                     </div>

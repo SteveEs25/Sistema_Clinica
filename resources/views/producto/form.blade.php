@@ -17,13 +17,15 @@
             {!! $errors->first('nombre_comercial', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('tipoProducto_id') }}
-            {{ Form::text('tipoProducto_id', $producto->tipoProducto_id, ['class' => 'form-control' . ($errors->has('tipoProducto_id') ? ' is-invalid' : ''), 'placeholder' => 'Tipoproducto Id']) }}
+            {{ Form::label('Tipo Producto') }}
+            {{ Form::select('tipoProducto_id', $tipoProducto, $producto->tipoProducto_id, ['class' => 'form-control' . ($errors->has('tipoProducto_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione el Tipo de Producto']) }}
             {!! $errors->first('tipoProducto_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+        <a class="btn btn-danger" href="{{ route('productos.index') }}"> Atrás</a>
     </div>
 </div>
