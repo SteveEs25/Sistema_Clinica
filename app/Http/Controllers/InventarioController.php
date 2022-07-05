@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventario;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,9 @@ class InventarioController extends Controller
     public function create()
     {
         $inventario = new Inventario();
-        return view('inventario.create', compact('inventario'));
+        $producto = Producto::pluck('nombre_producto', 'id');
+
+        return view('inventario.create', compact('inventario', 'producto'));
     }
 
     /**
@@ -47,8 +50,7 @@ class InventarioController extends Controller
 
         $inventario = Inventario::create($request->all());
 
-        return redirect()->route('inventarios.index')
-            ->with('success', 'Inventario created successfully.');
+        return redirect()->route('inventarios.create')->with('crear', 'creado');
     }
 
     /**
@@ -73,8 +75,9 @@ class InventarioController extends Controller
     public function edit($id)
     {
         $inventario = Inventario::find($id);
+        $producto = Producto::pluck('nombre_producto', 'id');
 
-        return view('inventario.edit', compact('inventario'));
+        return view('inventario.edit', compact('inventario', 'producto'));
     }
 
     /**
@@ -90,8 +93,7 @@ class InventarioController extends Controller
 
         $inventario->update($request->all());
 
-        return redirect()->route('inventarios.index')
-            ->with('success', 'Inventario updated successfully');
+        return redirect()->route('inventarios.index')->with('editar', 'editado');
     }
 
     /**
@@ -103,7 +105,6 @@ class InventarioController extends Controller
     {
         $inventario = Inventario::find($id)->delete();
 
-        return redirect()->route('inventarios.index')
-            ->with('success', 'Inventario deleted successfully');
+        return redirect()->route('inventarios.index');
     }
 }

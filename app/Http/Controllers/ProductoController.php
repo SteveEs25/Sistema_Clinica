@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\TipoProducto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,9 @@ class ProductoController extends Controller
     public function create()
     {
         $producto = new Producto();
-        return view('producto.create', compact('producto'));
+        $tipoProducto = TipoProducto::pluck('nombre_tipoProducto', 'id');
+
+        return view('producto.create', compact('producto', 'tipoProducto'));
     }
 
     /**
@@ -47,8 +50,7 @@ class ProductoController extends Controller
 
         $producto = Producto::create($request->all());
 
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto created successfully.');
+        return redirect()->route('productos.create')->with('crear', 'creado');
     }
 
     /**
@@ -73,8 +75,9 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::find($id);
+        $tipoProducto = TipoProducto::pluck('nombre_tipoProducto', 'id');
 
-        return view('producto.edit', compact('producto'));
+        return view('producto.edit', compact('producto', 'tipoProducto'));
     }
 
     /**
@@ -90,8 +93,7 @@ class ProductoController extends Controller
 
         $producto->update($request->all());
 
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto updated successfully');
+        return redirect()->route('productos.index')->with('editar', 'editado');
     }
 
     /**
@@ -103,7 +105,6 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id)->delete();
 
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto deleted successfully');
+        return redirect()->route('productos.index');
     }
 }

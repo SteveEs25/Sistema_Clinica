@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EntradaCabecera;
 use App\Models\EntradaDetalle;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,10 @@ class EntradaDetalleController extends Controller
     public function create()
     {
         $entradaDetalle = new EntradaDetalle();
-        return view('entrada-detalle.create', compact('entradaDetalle'));
+        $entradaCabecera = EntradaCabecera::pluck('numero_factura', 'id');
+        $producto = Producto::pluck('nombre_producto', 'id');
+
+        return view('entrada-detalle.create', compact('entradaDetalle', 'entradaCabecera', 'producto'));
     }
 
     /**
@@ -47,8 +52,7 @@ class EntradaDetalleController extends Controller
 
         $entradaDetalle = EntradaDetalle::create($request->all());
 
-        return redirect()->route('entrada-detalles.index')
-            ->with('success', 'EntradaDetalle created successfully.');
+        return redirect()->route('entrada-detalles.create')->with('crear', 'creado');
     }
 
     /**
@@ -73,8 +77,10 @@ class EntradaDetalleController extends Controller
     public function edit($id)
     {
         $entradaDetalle = EntradaDetalle::find($id);
+        $entradaCabecera = EntradaCabecera::pluck('numero_factura', 'id');
+        $producto = Producto::pluck('nombre_producto', 'id');
 
-        return view('entrada-detalle.edit', compact('entradaDetalle'));
+        return view('entrada-detalle.edit', compact('entradaDetalle', 'entradaCabecera', 'producto'));
     }
 
     /**
@@ -90,8 +96,7 @@ class EntradaDetalleController extends Controller
 
         $entradaDetalle->update($request->all());
 
-        return redirect()->route('entrada-detalles.index')
-            ->with('success', 'EntradaDetalle updated successfully');
+        return redirect()->route('entrada-detalles.index')->with('editar', 'editado');
     }
 
     /**
@@ -103,7 +108,6 @@ class EntradaDetalleController extends Controller
     {
         $entradaDetalle = EntradaDetalle::find($id)->delete();
 
-        return redirect()->route('entrada-detalles.index')
-            ->with('success', 'EntradaDetalle deleted successfully');
+        return redirect()->route('entrada-detalles.index');
     }
 }

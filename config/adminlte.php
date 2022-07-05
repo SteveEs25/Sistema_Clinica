@@ -248,8 +248,20 @@ return [
         ],
         ['header' => 'Almacenaje'],
         [
-            'text'        => 'Entradas',
+            'text'        => 'Pedidos',
             'url'         => '/entrada-cabeceras',
+            'icon'        => 'fas fa-fw fa-arrow-right',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Bodega',
+            'url'         => '/entrada-detalles',
+            'icon'        => 'fas fa-fw fa-arrow-right',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Productos',
+            'url'         => '/productos',
             'icon'        => 'fas fa-fw fa-arrow-right',
             'label_color' => 'success',
         ],
